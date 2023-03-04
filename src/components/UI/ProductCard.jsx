@@ -4,9 +4,9 @@ import "../../styles/product-card.css";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({item}) => {
+const ProductCard = ({ item }) => {
   return (
-    <Col lg="3" md="4">
+    <Col lg="3" md="4" className="mb-2">
       <div className="product__item">
         <div className="product__img">
           <motion.img

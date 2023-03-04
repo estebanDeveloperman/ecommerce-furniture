@@ -20,11 +20,16 @@ const Home = () => {
   const year = new Date().getFullYear();
 
   useEffect(() => {
-    const filteredProducts = products.filter(
+    const filteredTrendingProducts = products.filter(
       (item) => item.category === "chair"
     );
 
-    setTrendingProducts(filteredProducts);
+    const filteredBestSalesProducts = products.filter(
+      (item) => item.category === "sofa"
+    );
+
+    setTrendingProducts(filteredTrendingProducts);
+    setBestSalesProducts(filteredBestSalesProducts);
   }, []);
 
   return (
@@ -75,6 +80,8 @@ const Home = () => {
             <Col lg="12" className="text-center">
               <h2 className="section__title"> Best Sales</h2>
             </Col>
+
+            <ProductsList data={bestSalesProducts} />
           </Row>
         </Container>
       </section>
