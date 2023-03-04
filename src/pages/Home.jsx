@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import products from "../assets/data/products";
 
 import Helmet from "../components/Helmet/Helmet";
 import "../styles/home.css";
@@ -10,8 +11,12 @@ import { Container, Row, Col } from "reactstrap";
 import heroImg from "../assets/images/hero-img.png";
 
 import Services from "../services/Services";
+import ProductsList from "../components/UI/ProductsList";
 
 const Home = () => {
+
+  const [data, setData] = useState(products);
+
   const year = new Date().getFullYear();
   return (
     <Helmet title={"Home"}>
@@ -43,15 +48,14 @@ const Home = () => {
         </Container>
       </section>
 
-      <Services/>
+      <Services />
       <section className="trending__products">
         <Container>
           <Row>
-            <Col lg='12' className="text-center">
-              <h2 className="section__title">
-                Trending Products
-              </h2>
+            <Col lg="12" className="text-center">
+              <h2 className="section__title">Trending Products</h2>
             </Col>
+            <ProductsList />
           </Row>
         </Container>
       </section>
