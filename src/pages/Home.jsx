@@ -20,6 +20,8 @@ import counterImg from "../assets/images/counter-timer-img.png";
 const Home = () => {
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
+  const [mobileProducts, setMobileProducts] = useState([]);
+  const [wirelessProducts, setWirelessProducts] = useState([]);
 
   const year = new Date().getFullYear();
 
@@ -32,8 +34,18 @@ const Home = () => {
       (item) => item.category === "sofa"
     );
 
+    const filteredMobileProducts = products.filter(
+      (item) => item.category === "mobile"
+    );
+
+    const filteredWirelessProducts = products.filter(
+      (item) => item.category === "wireless"
+    );
+
     setTrendingProducts(filteredTrendingProducts);
     setBestSalesProducts(filteredBestSalesProducts);
+    setMobileProducts(filteredMobileProducts);
+    setWirelessProducts(filteredWirelessProducts);
   }, []);
 
   return (
@@ -100,7 +112,10 @@ const Home = () => {
               </div>
               <Clock />
 
-              <motion.button whileTap={{scale: 1.2}} className="buy__btn store__btn">
+              <motion.button
+                whileTap={{ scale: 1.2 }}
+                className="buy__btn store__btn"
+              >
                 <Link to="/shop">Visit Store</Link>
               </motion.button>
             </Col>
@@ -111,7 +126,17 @@ const Home = () => {
         </Container>
       </section>
 
-      
+      <section className="new__arrivals">
+        <Container>
+          <Row>
+            <Col lg="12" className="text-center">
+              <h2 className="section__title">New Arrivals</h2>
+            </Col>
+            <ProductsList data={mobileProducts}/>
+            <ProductsList data={wirelessProducts}/>
+          </Row>
+        </Container>
+      </section>
     </Helmet>
   );
 };
